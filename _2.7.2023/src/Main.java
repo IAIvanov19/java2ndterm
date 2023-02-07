@@ -3,16 +3,19 @@ import javax.print.attribute.IntegerSyntax;
 
 public class Main {
     public static void main(String[] args){
-        Set<Integer> ints = new LinkedHashSet<>();
-        ints.add(1);
-        ints.add(38);
-        ints.add(5);
-        ints.add(1);
-        ints.add(20);
-        ints.remove(20);
+       Map<String, Map<String, Integer>> hashMap = new HashMap<>();
+       hashMap.put("123", new HashMap<>());
+       hashMap.get("123").put("Ivan",20);
+       hashMap.put ("456", new HashMap<>());
+       hashMap.get("456").put("Gosho", 30);
 
-        for(Integer integer: ints) {
-            System.out.println(integer);
-        }
+       for(String key : hashMap.keySet()){
+           String mainKey = key;
+           Map<String, Integer> innerMap = hashMap.get(key);
+           for(String innerKey : innerMap.keySet()){
+               String currentInnerKey = innerKey;
+               System.out.println(mainKey + " ---- " + innerKey + " ---- " + innerMap.get(innerKey));
+           }
+       }
     }
 }
